@@ -5,33 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binary Tree Simulation</title>
     <style>
-        body {
+        * {
+            font-family: Helvetica, Arial, Sans-serif;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #2d2d2d;
+            color: #efe4d1;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            align-self: center;
+            align-items: start;
+            margin-top: 20px;
+            letter-spacing: -0.5px;
         }
         canvas {
-            border: 1px solid black;
+            background-color: #efe4d1;
+            width: 80%;
+            height: 60%;
             margin-top: 20px;
+            border-radius: 30px;
         }
-        button {
+        button{
+            background-color: #efe4d1;
+            color: #2d2d2d;
+        }
+        input {
+            outline: #efe4d1 solid 2px;
+            background-color: #2d2d2d;
+            color: #efe4d1;
+        }
+        button, input {
             margin-top: 20px;
             padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            cursor: pointer;
+            border-radius: 15px;
         }
-        button:hover {
+        button:hover{
             background-color: #2980b9;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <h1>Binary Tree Simulation</h1>
+    <div>
+        <input type="number" id="node-value" placeholder="Enter node value" />
+        <button id="add-node-button">Add Node</button>
+    </div>
 
-    <input type="number" id="node-value" placeholder="Enter node value" />
-    <button id="add-node-button">Add Node</button>
 
     <canvas id="tree-canvas" width="800" height="600"></canvas>
 
@@ -91,36 +122,63 @@
                 }
 
                 drawTree() {
+                    const canvasCenterX = treeCanvas.width / 2;
+                    const canvasCenterY = treeCanvas.height / 2;
+                    const canvasDiagonal = Math.hypot(treeCanvas.width, treeCanvas.height);
+                    const nodeCount = this.nodes.length;
+                    const radius = Math.max(10, Math.min(30, canvasDiagonal / (2 * Math.sqrt(nodeCount))) / Math.sqrt(nodeCount + 1));
+                    
                     ctx.clearRect(0, 0, treeCanvas.width, treeCanvas.height);
                     this.nodes.forEach(node => {
                         ctx.beginPath();
-                        ctx.arc(node.x, node.y, 20, 0, 2 * Math.PI);
+                        ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI);
+                        ctx.fillStyle = "#2d2d2d";
                         ctx.fill();
-                        ctx.strokeText(node.value, node.x - 5, node.y + 5);
+                        ctx.fillStyle = "#efe4d1";
+                        ctx.textAlign = "center";
+                        ctx.font = `${radius}px Arial`;
+                        ctx.fillText(node.value, node.x, node.y + radius / 3);
+
                         if (node.left) {
-                            ctx.moveTo(node.x, node.y);
-                            ctx.lineTo(node.left.x, node.left.y);
+                            ctx.moveTo(node.x, node.y + radius);
+                            ctx.lineTo(node.left.x, node.left.y + radius);
                             ctx.stroke();
                         }
                         if (node.right) {
-                            ctx.moveTo(node.x, node.y);
-                            ctx.lineTo(node.right.x, node.right.y);
+                            ctx.moveTo(node.x, node.y + radius);
+                            ctx.lineTo(node.right.x, node.right.y + radius);
                             ctx.stroke();
                         }
                     });
                 }
             }
-
             const tree = new BinaryTree();
+                addNodeButton.addEventListener('click', () => {
+                    const value = parseInt(nodeValueInput.value);
+                    if (!isNaN(value)) {
+                        tree.addNode(value);
+                        animatePop(tree.nodes[tree.nodes.length - 1]);
+                        nodeValueInput.value = '';
+                    }
+                });
 
-            addNodeButton.addEventListener('click', () => {
-                const value = parseInt(nodeValueInput.value);
-                if (!isNaN(value)) {
-                    tree.addNode(value);
-                    tree.drawTree();
-                    nodeValueInput.value = '';
+                function animatePop(node) {
+                    let startRadius = 0;
+                    const targetRadius = 20;
+                    const animationSteps = 10;
+                    const step = (targetRadius - startRadius) / animationSteps;
+                    let currentStep = 0;
+
+                    function pop() {
+                        if (currentStep < animationSteps) {
+                            currentStep++;
+                            node.radius = startRadius + step * currentStep;
+                            tree.drawTree();
+                            requestAnimationFrame(pop);
+                        }
+                    }
+                    pop();
                 }
-            });
         });
     </script>
 </body>
