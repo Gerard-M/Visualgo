@@ -8,13 +8,9 @@ Provide a high-level overview of the system architecture, including
 key components and their interactions.
 
 # III. Applied Computer Science Concept
-*Sorting Algorithms*
--Bubble Sort
--Quick Sort
--Merge Sort
--
-*Binary Search Tree*
-*Stack and Queue*
+*Sorting Algorithms* <br>
+*Binary Search Tree* <br>
+*Stack and Queue* 
 
 # IV. Algorithms Used
 Discuss the algorithms implemented in the project, how they work,
