@@ -1,14 +1,20 @@
 # Visualgo
 
 # I. Project Overview
-A brief description of the purpose of the project and its key features.
+Visualgo is a web-based application that aims to help other algo-ers in algorithm visualization. Our app holds a user authentication, built to store the user input history. And the main feature is the simulation of algorithms; **Sorting Algorithm Simulation** allows bar dragging for interactivity, user input, algorithm and speed choices, pause and play, **Binary Search Tree Simulation** allows user inout for adding and removing nodes, and **Data Structure Visualizer** allows users to push/queue based on input and pop/dequeue.
 
 # II. System Architecture
 Provide a high-level overview of the system architecture, including
 key components and their interactions.
 
 # III. Applied Computer Science Concept
-Explain the core computer science concept applied in the project.
+*Sorting Algorithms*
+-Bubble Sort
+-Quick Sort
+-Merge Sort
+-
+*Binary Search Tree*
+*Stack and Queue*
 
 # IV. Algorithms Used
 Discuss the algorithms implemented in the project, how they work,
