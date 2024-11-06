@@ -57,6 +57,21 @@ button {
     border-radius: 10px;
     cursor: pointer;
 }
+#input-button {
+    margin-right: 10px;
+}
+#array-input {
+    padding: 10px;
+    font-size: 16px;
+    margin: 2px;
+    border: none;
+    border-radius: 10px;
+    border-color: #efe4d1;
+    background-color: transparent;
+    color: #efe4d1;
+    flex-grow: 1;
+}
+
 #bars-container {
     flex-grow: 1;
     background-color: #efe4d1;
@@ -98,7 +113,7 @@ button {
     align-items: center;
     font-size: 64px;
     font-weight: bold;
-    color: #1b661b; /* Green text */
+    color: #1b661b; 
     text-shadow: 
         0 0 5px #ffffff, /* White highlights */
         0 0 10px #ffffff, /* White highlights */
@@ -139,11 +154,10 @@ button {
 }
 
 .dropdown-content a:hover {
-    background-color: #efe4d1; /* Hover background color */
-    color: #444; /* Hover text color */
+    background-color: #efe4d1;
+    color: #444;
 }
 
-/* To show the dropdown content on hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }     
