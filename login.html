@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="log_in.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script></head>
+<body>
+    <div class="container">
+        <div class="left" id="vanta-left">
+            <img src="assets\Visualgo.png" alt="VisualGo">
+        </div>
+        <div class="right">
+            <div class="login-box">
+                <div class="icon">
+                    <i class="fas fa-user-circle"></i> 
+                </div>
+                <h2>Log In</h2>
+                <div class="input-group">
+                    <input type="text" id="email" placeholder="Email ID"/>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Password"/>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox"/> Remember me
+                    </label>
+                    <a href="forgetpassword.html" id="forgotPassword">Forgot Password?</a>
+                </div>
+                <button class="login-btn" id="login-btn">LOGIN</button>
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="register.html" id="registerLink">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="left" id="vanta-bg">
+        <img src="assets\Visualgo.png" alt="VisualGo">
+    </div>
+
+
+    <script type="module" src="login.js"></script>
+</body>
+</html>

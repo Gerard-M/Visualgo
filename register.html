@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="register_forgotpass.css"> 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Side: Registration Form -->
+        <div class="left">
+            <div class="register-container login-box" id="register-container">
+                <h1>Create an Account</h1>
+                <input id="email-signup" type="email" placeholder="Email *">
+                <input id="confirm-email-signup" type="email" placeholder="Confirm Email *">
+                <input id="password-signup" type="password" placeholder="Password *">
+                <input id="confirm-password-signup" type="password" placeholder="Confirm Password *">
+                <button id="create-acct-btn">Create Account</button>
+                <p>Already have an account? <a href="login.html" id="login-link">Login</a></p>
+            </div>
+        </div>
+
+        <!-- Right Side: Vanta Background with Logo -->
+        <div class="right" id="vanta-bg">
+            <img src="assets\Visualgo.png" alt="VisualGo">
+        </div>
+    </div>
+
+    <script type="module" src="register.js"></script>
+</body>
+</html>
