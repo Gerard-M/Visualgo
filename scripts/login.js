@@ -47,7 +47,7 @@ loginBtn.addEventListener("click", () => {
             const user = userCredential.user;
             console.log("User is signed in:", user);
             alert("Login successful!");
-            window.location.href = "try.html"; // Redirect to another page after successful login
+            window.location.href = "landing_page.html"; // Redirect to another page after successful login
         })
         .catch((error) => {
             failedAttempts++;

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Tree Simulation</title>
+    <style>
+        * {
+            font-family: Helvetica, Arial, Sans-serif;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #2d2d2d;
+            color: #efe4d1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            align-self: center;
+            align-items: start;
+            margin-top: 20px;
+            letter-spacing: -0.5px;
+        }
+        canvas {
+            background-color: #efe4d1;
+            width: 80%;
+            height: 60%;
+            margin-top: 20px;
+            border-radius: 30px;
+        }
+        button{
+            background-color: #efe4d1;
+            color: #2d2d2d;
+        }
+        input {
+            outline: #efe4d1 solid 2px;
+            background-color: #2d2d2d;
+            color: #efe4d1;
+        }
+        button, input {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 15px;
+        }
+        button:hover{
+            background-color: #2980b9;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Binary Tree Simulation</h1>
+    <div>
+        <input type="number" id="node-value" placeholder="Enter node value" />
+        <button id="add-node-button">Add Node</button>
+        <button id="clear-tree-button">Clear Tree</button>
+        <button id="save-tree-button">Save Tree</button>
+    </div>
+    <canvas id="tree-canvas" width="800" height="600"></canvas>
+
+    <h2>Tree History</h2>
+    <div id="history-container"></div>
+
+    <script type="module" src="../scripts/b-tree.js"></script>
+</body>
+</html>

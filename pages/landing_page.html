@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualgo</title>
+    <style>
+        * {
+            font-family: Helvetica, Sans-serif;
+        }
+        body {
+            margin: 0;
+            background-color: black;
+            overflow: hidden;
+            padding-top: 60px;
+        }
+        #background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+        #title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: larger;
+            color: #efe4d1;
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            box-sizing: border-box; /* Ensure padding and border do not affect centering */
+        }
+        #title p {
+            font-size: small;
+            margin: 0 auto;
+            text-shadow: 0px 0px 10px #333, 0px 0px 15px #333;
+            white-space: nowrap;
+            letter-spacing: .15em;
+        }
+        #title h1 {
+            font-size: 200px;
+            letter-spacing: -5px;
+            margin-bottom: 0;
+            text-shadow: 0px 0px 10px #333, 0px 0px 20px #333;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: transparent;
+            color: #efe4d1;
+            padding: 10px;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            z-index: 1000;
+        }
+        nav h3 {
+            font-size: 14px;
+            margin: 5px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #efe4d1;
+            position: relative;
+            display: inline-block;
+        }
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #efe4d1;
+            transition: width 0.3s;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        #buttons {
+            align-items: end;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        #login_btn, #register_btn {
+            border-radius: 15px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #login_btn {
+            background-color: #efe4d1;
+            color: #202020;
+            border: none;
+        }
+        #register_btn {
+            background-color: transparent;
+            color: #efe4d1;
+            border: 2px solid #efe4d1;
+        }
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            font-size: smaller;
+            color: #efe4d1;
+            padding: 10px;
+            width: 100vw;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="sorting_algo.html"><h3>Sorting Algorithm</h3></a>
+        <a href="b_tree.html"><h3>Binary Search Tree</h3></a>
+        <a href="dataStructure.html"><h3>Data Structures</h3></a>
+        <div id="buttons">
+            <button id="login_btn">Log In</button>
+            <button id="register_btn">Sign Up</button>
+        </div>
+    </nav>
+    <div id="background"></div>
+    <div id="title">
+        <h1>Visualgo</h1>
+        <p>a web based application showcasing visualization of various algorithms...</p>
+    </div>
+    <footer>
+        <p>&copy; 2023 Visualgo. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: "#background",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xccb277,
+            backgroundColor: 0x17171a
+        });
+    </script>
+</body>
+</html>
