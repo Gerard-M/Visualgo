@@ -38,9 +38,17 @@ createAcctBtn.addEventListener("click", () => {
             window.location.href = "../pages/login.html"; // Redirect to login
         })
         .catch((error) => {
-            alert("Please ensure all fields are filled, and passwords match.");
+            if (error.code === "auth/email-already-in-use") {
+                alert("An account with this email already exists. Please try logging in or use a different email.");
+            } else if (error.code === "auth/weak-password") {
+                alert("The password is too weak. Please use a stronger password.");
+            } else if (error.code === "auth/invalid-email") {
+                alert("The email address is invalid. Please enter a valid email.");
+            } else {
+                alert("An error occurred. Please ensure all fields are filled, and passwords match.");
+            }
         });
-});
+    })
 
 VANTA.NET({
     el: "#vanta-bg",
