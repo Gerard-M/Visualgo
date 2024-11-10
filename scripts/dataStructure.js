@@ -1,4 +1,26 @@
-        function addToStack() {
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+import { firebaseConfig } from './firebaseConfig.js';
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);  
+
+let currentUser, currentUserEmail;
+
+onAuthStateChanged(auth, user => {
+    if (user) {
+        currentUser = user.uid;
+        currentUserEmail = user.email;
+    } else {
+        alert("No user is signed in.");
+        window.location.href = 'login.html';
+    }
+});
+
+function addToStack() {
             const stackInput = document.getElementById("stack-input").value;
             const stackError = document.getElementById("stack-error");
             stackError.textContent = "";

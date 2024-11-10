@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Visualgo</title>
+    
     <style>
         * {
             font-family: Helvetica, Sans-serif;
@@ -97,18 +98,18 @@
                 align-items: flex-start;
             }
         }
-        #login_btn, #register_btn {
+        #profile_btn, #logout_btn {
             border-radius: 15px;
             padding: 10px 20px;
             margin: 5px;
             cursor: pointer;
         }
-        #login_btn {
+        #profile_btn {
             background-color: #efe4d1;
             color: #202020;
             border: none;
         }
-        #register_btn {
+        #logout_btn {
             background-color: transparent;
             color: #efe4d1;
             border: 2px solid #efe4d1;
@@ -135,8 +136,8 @@
         <a href="b_tree.html"><h3>Binary Search Tree</h3></a>
         <a href="dataStructure.html"><h3>Data Structures</h3></a>
         <div id="buttons">
-            <button id="login_btn">Log In</button>
-            <button id="register_btn">Sign Up</button>
+            <button id="profile_btn">Profile</button>
+            <button id="logout_btn">Log Out </button>
         </div>
     </nav>
     <div id="background"></div>
@@ -149,6 +150,8 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+    <script type="module" src="../scripts/logout.js"></script>
+
     <script>
         VANTA.NET({
             el: "#background",

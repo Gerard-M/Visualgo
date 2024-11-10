@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization with Chart.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script type="module" src="../scripts/profile.js"></script>
+    <style>
+        body {
+            background-color: #2d2d2d;
+            color: #efe4d1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #2d2d2d;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .chart {
+            background-color: #efe4d1;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            width: 400px; /* Increased width for larger charts */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .profile {
+            background-color: #efe4d1;
+            color: #2d2d2d;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            width: 350px; /* Consistent width with charts */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            text-align: left;
+        }
+        .profile h2 {
+            margin-top: 0;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .edit-button, .save-button {
+            background-color: #2d2d2d;
+            color: #efe4d1;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .input-field {
+            display: none; /* Hidden by default */
+            margin: 5px 0;
+        }
+        .input-field label {
+            display: block;
+            margin: 5px 0 2px;
+        }
+        .input-field input, .input-field textarea {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        canvas {
+            background-color: #efe4d1;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>User Profile</h1>
+    <div class="profile">
+        <img src="profile-pic.jpg" alt="Profile Picture" id="profilePicture">
+        <h2>User Profile</h2>
+        <div id="profileInfo">
+            <p><strong>Name:</strong> <span id="profileName"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>Bio:</strong> <span id="profileAbout"></span></p>
+            <p><strong>Interests:</strong> <span id="profileInterests"></span></p>
+        </div>
+        <div id="profileInputs" class="input-field">
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput">
+
+            <label for="aboutInput">About:</label>
+            <textarea id="aboutInput"></textarea>
+            <label for="interestsInput">Interests:</label>
+            <input type="text" id="interestsInput">
+        </div>
+        <button class="edit-button" id="editButton">Edit</button>
+        <button class="save-button" id="saveButton" style="display: none;">Save Changes</button>
+    </div>
+
+    <h1>Data Visualization</h1>
+    <div class="container">
+        <div class="chart">
+            <h2>Sorting Frequency Visualization</h2>
+            <canvas id="selectionFrequencyChart" width="400" height="300"></canvas> <!-- Increased height -->
+        </div>
+        <div class="chart">
+            <h2>Node Frequency Visualization</h2>
+            <canvas id="nodeFrequencyChart" width="400" height="300"></canvas> <!-- Increased height -->
+        </div>
+        <div class="chart">
+            <h2>Node Direction Visualization</h2>
+            <canvas id="nodeDirectionChart" width="400" height="300"></canvas> <!-- Increased height -->
+        </div>
+    </div>
+
+</body>
+</html>

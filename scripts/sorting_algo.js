@@ -1,10 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { getFirestore, collection, doc, setDoc, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { Timestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 import { firebaseConfig } from './firebaseConfig.js';
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -12,7 +12,6 @@ var userUid;
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        console.log("User is signed in:", user.uid);
         userUid = user.uid;
     } else {
         alert("No user is signed in.");
@@ -40,6 +39,7 @@ let resolvePause = null;
 function createBars() {
     barsContainer.innerHTML = '';
     bars = [];
+
     for (let i = 0; i < 50; i++) {
         const bar = document.createElement('div');
         bar.className = 'bar';
@@ -61,11 +61,20 @@ function renderBars(array) {
     const maxValue = Math.max(...array);
     barsContainer.innerHTML = '';
     bars = [];
+
+    const containerHeight = barsContainer.clientHeight;
+    const minHeight = 30;  // Minimum height to avoid bars being too small
+    const maxHeight = 380 - minHeight;
+
     array.forEach(value => {
         const bar = document.createElement('div');
         bar.className = 'bar';
-        const height = value * 10; // multiply value by 10 to get height in px
+        //const height = value * 10; // multiply value by 10 to get height in px
+
+        const height = (value / maxValue) * maxHeight + minHeight;
+
         bar.style.height = `${height}px`;
+
         const valueSpan = document.createElement('span');
         valueSpan.className = 'bar-value';
         valueSpan.textContent = value; // display the original value
@@ -79,13 +88,23 @@ function renderBars(array) {
 }
 
 function updateBarPositions() {
+    const containerHeight = 380;
+    const maxValue = Math.max(...bars);
+    const minHeight = 30;  // Minimum height to avoid bars being too small
+    const maxHeight = containerHeight - minHeight;
+
     const barWidth = (barsContainer.clientWidth - (bars.length + 1) * 5) / bars.length;
     const barElements = barsContainer.children;
+
     for (let i = 0; i < bars.length; i++) {
-        barElements[i].style.height = `${bars[i]}px`;
+        const height = (bars[i] / maxValue) * maxHeight + minHeight;
+        barElements[i].style.height = `${height}px`;
+
+        //barElements[i].style.height = `${bars[i]}px`;
         barElements[i].style.left = `${i * (barWidth + 5) + 5}px`;
         barElements[i].style.width = `${barWidth}px`;
         barElements[i].querySelector('.bar-value').textContent = bars[i];
+
     }
 }
 
@@ -327,7 +346,6 @@ async function startSorting() {
         bar.style.backgroundColor = 'green';
     });
 
-    // Show the "SORTED!" message
     const sortedMessage = document.getElementById('sorted-message');
     sortedMessage.classList.add('show');
 
@@ -336,7 +354,6 @@ async function startSorting() {
         sortedMessage.classList.remove('show');
     }, 2000);
 }
-// Event listeners for buttons
 randomizeButton.onclick = createBars;
 sortButton.onclick = startSorting;
 
@@ -345,7 +362,7 @@ playButton.onclick = () => {
     playButton.style.display = 'none';
     pauseButton.style.display = 'inline-block';
     if (resolvePause) {
-        resolvePause(); // Resume the sorting process if it was paused
+        resolvePause();
         resolvePause = null;
     }
 };
@@ -370,14 +387,14 @@ speedDropdown.addEventListener('click', (e) => {
 
 inputButton.addEventListener('click', async () => {
     const inputData = document.getElementById('array-input').value;
-    const unsortedArray = inputData.split(',').map(Number).filter(n => !isNaN(n) && n > 0 && n <= 100).slice(0, 100);
+    const unsortedArray = inputData.split(',').map(Number).filter(n => !isNaN(n) && n > 0).slice(0, 100);
+
     renderBars(unsortedArray);
 
-    // Correct Firestore document addition
     await addDoc(collection(db, "sorting"), { 
         element_list: inputData, 
+        timestamp: Timestamp.now(),
         uid: userUid });
-    alert("added list");
 
     fetchUserLists();
 
@@ -389,39 +406,36 @@ window.onclick = (event) => {
     }
 };
 
-// Initialize bars when the document is fully loaded
 document.addEventListener('DOMContentLoaded', createBars);
 
 const listsBox = document.getElementById('lists-box');
 
-// Function to fetch user lists from Firestore
 async function fetchUserLists() {
     const querySnapshot = await getDocs(collection(db, "sorting"));
     listsBox.innerHTML = ''; // Clear previous lists
 
     querySnapshot.forEach(doc => {
         const data = doc.data();
-        if (data.uid === userUid) { // Check if the uid matches
-            const listButton = document.createElement('button'); // Create a button instead of a div
-            listButton.className = 'list-button'; // Optional: Change the class name for styling
-            listButton.textContent = data.element_list; // Set button text
-            listButton.onclick = () => handleListClick(data.element_list); // Attach click event
+        if (data.uid === userUid) { 
+            const listButton = document.createElement('button'); 
+            listButton.className = 'list-button'; 
+            listButton.textContent = data.element_list; 
+            listButton.onclick = () => handleListClick(data.element_list); 
 
-            listsBox.appendChild(listButton); // Append the button to the lists box
+            listsBox.appendChild(listButton); 
         }
     });
 }
 
 
-// Function to handle list click
 function handleListClick(elementList) {
-    const unsortedArray = elementList.split(',').map(Number).filter(n => !isNaN(n) && n > 0 && n <= 100).slice(0, 100);
-    renderBars(unsortedArray); // Render bars based on the clicked list
+    const unsortedArray = elementList.split(',').map(Number).filter(n => !isNaN(n) && n > 0).slice(0, 100);
+
+    renderBars(unsortedArray);
 }
 
-// Call fetchUserLists when the document is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    createBars(); // Initialize bars
-    fetchUserLists(); // Fetch and display user lists
+    createBars(); 
+    fetchUserLists();
 });
 

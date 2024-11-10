@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             userId = user.uid;
             loadHistory();
         } else {
-            console.log("No user is signed in.");
+            alert("No user is signed in.");
             window.location.href = 'login.html';
         }
     });

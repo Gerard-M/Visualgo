@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 import { firebaseConfig } from './firebaseConfig.js';
@@ -20,10 +20,6 @@ loginBtn.addEventListener("click", () => {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    console.log("Email:", email);
-    console.log("Password:", password);
-
-    // Ensure the email and password are not empty
     if (!email || !password) {
         alert("Please enter both email and password.");
         return;
@@ -45,9 +41,7 @@ loginBtn.addEventListener("click", () => {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            console.log("User is signed in:", user);
-            alert("Login successful!");
-            window.location.href = "landing_page.html"; // Redirect to another page after successful login
+            window.location.href = "landing_page.html";
         })
         .catch((error) => {
             failedAttempts++;
@@ -63,6 +57,7 @@ loginBtn.addEventListener("click", () => {
         });
 });
 
+
 VANTA.NET({
     el: "#vanta-bg",
     color: 0xf5f0d9,
@@ -71,3 +66,4 @@ VANTA.NET({
     maxDistance: 20.0,
     spacing: 15.0
 });
+
