@@ -439,3 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchUserLists();
 });
 
+document.querySelector('.history-dropbtn').addEventListener('click', function () {
+    const dropdownContent = document.getElementById('lists-box');
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+});

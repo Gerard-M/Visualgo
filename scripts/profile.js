@@ -52,7 +52,7 @@ async function fetchUserData(uid) {
         document.getElementById('profileEmail').innerText = currentUserEmail;
         document.getElementById('profileAbout').innerText = "About data not provided.";
         document.getElementById('profileInterests').innerText = "Interests not provided.";
-        document.getElementById('profilePicture').src = profileNumber;
+        document.getElementById('profilePicture').src = "../assets/randompic.jpg";
         console.log("User does not exist. Please fill in your details.");
     }
 

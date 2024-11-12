@@ -173,3 +173,30 @@ button {
     background-color: rgba(239, 228, 209, 0.3);
     border-radius: 5px 5px 0 0;
 }
+
+.history-dropbtn {
+    background-color: #efe4d1;
+    color: #444;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.history-dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.lists-container .history-dropdown-content a {
+    color: black;
+    padding: 8px 10px;
+    text-decoration: none;
+    display: block;
+}
