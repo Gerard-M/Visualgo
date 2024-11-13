@@ -29,7 +29,33 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'login.html';
         }
     });
-
+    
+   window.onload = function() {
+        const loadingScreen = document.createElement('div');
+        loadingScreen.id = 'loading-screen';
+        loadingScreen.style.position = 'fixed';
+        loadingScreen.style.top = '0';
+        loadingScreen.style.left = '0';
+        loadingScreen.style.width = '100vw';
+        loadingScreen.style.height = '100vh';
+        loadingScreen.style.background = 'black';
+        loadingScreen.style.display = 'flex';
+        loadingScreen.style.justifyContent = 'center';
+        loadingScreen.style.alignItems = 'center';
+        loadingScreen.style.fontSize = '100px';
+        document.body.appendChild(loadingScreen);
+    
+        setTimeout(() => {
+            loadingScreen.style.transition = 'opacity 3s';
+            loadingScreen.style.opacity = 0;
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 3s';
+                document.body.style.opacity = 1;
+                loadingScreen.remove();
+            }, 2000);
+        }, 1000);
+    };
+    
     class TreeNode {
         constructor(value, x, y) {
             this.value = value;
