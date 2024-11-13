@@ -27,9 +27,23 @@ decisions.
 Explain how you ensured the project’s correctness and efficiency
 
 # VIII. How to Run the Project
-Discuss the step-by-step process on how to run your project
+<li>
+<ol>Login/Register Account</ol>
+<ol>Select ALgorithm To Use</ol>
+</li>
 
 # IX. Contributors
-Names of contributors, instructor
+**Gerard Andrei M. Malapote**<br>
+Project Manager/Fullstack Developer <br>
+<br>
+**Kristhian O. Pinili**<br>
+Frontend Developer <br>
+<br>
+**Marc Linus D. Rosales**<br>
+Backend Developer <br>
+<br>
+**Fatima Marie Agdon, MSCS**<br>
+Course Instructor<br>
+<br>
 
 # X. Acknowledgment
