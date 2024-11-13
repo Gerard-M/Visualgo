@@ -181,17 +181,22 @@ button {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 7.5vw;
     text-align: left;
 }
 
 .history-dropdown-content {
     display: none;
-    background-color: #f9f9f9;
+    background-color: #efe4d1;
+    border-radius: 5px;
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 2px;
     overflow-y: auto;
+    max-width: max-content;
     max-height: 200px;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    max-height: 0;
 }
 
 .lists-container .history-dropdown-content a {
@@ -199,4 +204,11 @@ button {
     padding: 8px 10px;
     text-decoration: none;
     display: block;
+}
+
+.history-dropbtn:focus + .history-dropdown-content, 
+.history-dropbtn:active + .history-dropdown-content {
+    display: block;
+    opacity: 1;
+    max-height: 200px;
 }
