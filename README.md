@@ -1,49 +1,66 @@
 # Visualgo
 
-# I. Project Overview
-Visualgo is a web-based application that aims to help other algo-ers in algorithm visualization. Our app holds a user authentication, built to store the user input history. And the main feature is the simulation of algorithms; **Sorting Algorithm Simulation** allows bar dragging for interactivity, user input, algorithm and speed choices, pause and play, **Binary Search Tree Simulation** allows user inout for adding and removing nodes, and **Data Structure Visualizer** allows users to push/queue based on input and pop/dequeue.
+## I. Project Overview
+Visualgo is a web-based application designed to help users understand computer science concepts through interactive algorithm visualization. It supports simulation of **Sorting Algorithms**, **Binary Search Trees**, and **Data Structure Visualizations** like stacks and queues. Features include:
 
-# II. System Architecture
-Provide a high-level overview of the system architecture, including
-key components and their interactions.
+- **Sorting Algorithm Simulation**: Drag-and-drop interactivity, user input options, algorithm and speed selection, pause/play functionality.
+- **Binary Search Tree Simulation**: Interactive node addition and removal.
+- **Data Structure Visualizer**: Allows users to push/queue and pop/dequeue elements dynamically.
 
-# III. Applied Computer Science Concept
-*Sorting Algorithms* <br>
-*Binary Search Tree* <br>
-*Stack and Queue* 
+This application provides an educational platform aimed at enhancing comprehension of algorithmic processes.
 
-# IV. Algorithms Used
-Discuss the algorithms implemented in the project, how they work,
-and how they are applied.
+## II. System Architecture
+The application follows a client-server model with key components:
+- **Frontend**: A responsive and interactive user interface built with modern web technologies for visualization.
+- **Backend**: Implements algorithm logic, API endpoints, and user authentication features.
+- **Database**: Stores user data, including input history and account details.
 
-# V. Security Mechanisms
-Discuss the security measures implemented in the project.
+## III. Applied Computer Science Concepts
+- Sorting Algorithms
+- Binary Search Tree Operations
+- Stack and Queue Management
 
-# VI. Development Process and Design Decisions
-Explain how computer science theory influenced your development
-decisions.
+## IV. Algorithms Used
+This project implements foundational algorithms:
+- Sorting algorithms (e.g., Bubble Sort, Quick Sort)
+- Binary Search Tree operations (insertion, deletion)
+- Stack and Queue operations (push, pop, enqueue, dequeue)
 
-# VII. Correctness and Efficiency
-Explain how you ensured the project’s correctness and efficiency
+Each algorithm is optimized for clarity and educational value.
 
-# VIII. How to Run the Project
-<li>
-<ol>Login/Register Account</ol>
-<ol>Select ALgorithm To Use</ol>
-</li>
+## V. Security Mechanisms
+Robust security measures include:
+- Input validation to prevent injection attacks.
+- Secure user authentication and data handling with Firebase.
+- Data encryption using CryptoJS.
 
-# IX. Contributors
-**Gerard Andrei M. Malapote**<br>
-Project Manager/Fullstack Developer <br>
-<br>
-**Kristhian O. Pinili**<br>
-Frontend Developer <br>
-<br>
-**Marc Linus D. Rosales**<br>
-Backend Developer <br>
-<br>
-**Fatima Marie Agdon, MSCS**<br>
-Course Instructor<br>
-<br>
+## VI. Development Process and Design Decisions
+- **User-centric Design**: Intuitive, interactive visualizations for better user engagement.
+- **Modular Codebase**: Separate layers for UI, business logic, and data storage ensure maintainability.
+- **Performance Optimization**: Preemptive testing for scalability and responsiveness across devices.
 
-# X. Acknowledgment
+## VII. Correctness and Efficiency
+Correctness and efficiency are ensured through:
+- Rigorous testing for all algorithms using diverse datasets.
+- Feedback loops during development to refine UI and logic.
+
+## VIII. How to Run the Project
+1. Create an account or log in to the system.
+2. Navigate to the main dashboard and select an algorithm simulation.
+3. Interact with the selected feature through the provided interface.
+
+## IX. Contributors
+**Gerard Andrei M. Malapote**  
+Project Manager/Fullstack Developer  
+
+**Kristhian O. Pinili**  
+Frontend Developer  
+
+**Marc Linus D. Rosales**  
+Backend Developer  
+
+**Fatima Marie Agdon, MSCS**  
+Course Instructor  
+
+## X. Acknowledgment
+This project is a collaboration of the **Visualgoers** team and was guided by Ms. Fatima Marie Agdon of Batangas State University, College of Informatics and Computing Sciences.
