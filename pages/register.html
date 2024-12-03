@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../styles/register_forgotpass.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
@@ -14,14 +14,44 @@
     <div class="container">
         <!-- Left Side: Registration Form -->
         <div class="left">
-            <div class="register-container login-box" id="register-container">
-                <h1>Create an Account</h1>
-                <input id="email-signup" type="email" placeholder="Email *">
-                <input id="confirm-email-signup" type="email" placeholder="Confirm Email *">
-                <input id="password-signup" type="password" placeholder="Password *">
-                <input id="confirm-password-signup" type="password" placeholder="Confirm Password *">
-                <button id="create-acct-btn">Create Account</button>
-                <p>Already have an account? <a href="../pages/login.html" id="login-link">Login</a></p>
+            <div class="register-container">
+                <div class="header-section">
+                    <div class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h1>Create Account</h1>
+                    <p class="subtitle">Join our community of learners</p>
+                </div>
+
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input id="email-signup" type="email" placeholder="Email *">
+                </div>
+
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope-open"></i>
+                    <input id="confirm-email-signup" type="email" placeholder="Confirm Email *">
+                </div>
+
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input id="password-signup" type="password" placeholder="Password *">
+                </div>
+
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input id="confirm-password-signup" type="password" placeholder="Confirm Password *">
+                </div>
+
+                <button id="create-acct-btn">
+                    <span>Create Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <p class="back-link">
+                    <i class="fas fa-chevron-left"></i>
+                    <a href="../pages/login.html" id="login-link">Back to Login</a>
+                </p>
             </div>
         </div>
 
