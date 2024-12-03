@@ -184,6 +184,11 @@ function createSelectionFrequencyChart(sortingData) {
             }]
         },
         options: {
+            plugins: {
+                legend: {
+                    position: 'top-right'
+                }
+            },
             scales: {
                 y: { beginAtZero: true }
             }
@@ -210,6 +215,11 @@ function createNodeFrequencyChart(nodeValues) {
             }]
         },
         options: {
+            plugins: {
+                legend: {
+                    position: 'top-right'
+                }
+            },
             scales: {
                 y: { beginAtZero: true }
             }
@@ -245,25 +255,69 @@ function createNodeDirectionChart(nodeValues) {
             }]
         },
         options: {
-            responsive: true,
             plugins: {
                 legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            if (label) {
-                                label += ': ' + context.raw;
-                            }
-                            return label;
-                        }
-                    }
+                    position: 'top-right'
                 }
-            }
+            },
+            responsive: true
         }
     });
 }
 
 createCharts();
+
+// Profile photo upload functionality
+const editPhotoBtn = document.querySelector('.edit-photo-btn');
+const profilePicture = document.getElementById('profilePicture');
+
+// Create a hidden file input
+const fileInput = document.createElement('input');
+fileInput.type = 'file';
+fileInput.accept = 'image/*';
+fileInput.style.display = 'none';
+document.body.appendChild(fileInput);
+
+// Handle photo upload button click
+editPhotoBtn.addEventListener('click', () => {
+    fileInput.click();
+});
+
+// Handle file selection
+fileInput.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+        alert('Please select an image file');
+        return;
+    }
+
+    // Validate file size (max 5MB)
+    const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+    if (file.size > maxSize) {
+        alert('Image size should be less than 5MB');
+        return;
+    }
+
+    try {
+        // Create a preview
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            profilePicture.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+
+        // Here you would typically upload the file to your server or storage
+        // For now, we'll just update the preview
+        // TODO: Add server upload functionality when backend is ready
+        
+        // Optional: Save the image URL to user's profile in database
+        // await updateUserProfilePhoto(imageUrl);
+        
+    } catch (error) {
+        console.error('Error updating profile photo:', error);
+        alert('Failed to update profile photo. Please try again.');
+    }
+});
