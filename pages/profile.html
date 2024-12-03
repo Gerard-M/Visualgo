@@ -3,132 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Visualization with Chart.js</title>
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <title>User Profile | VisualGo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../styles/profile.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script type="module" src="../scripts/profile.js"></script>
-    <style>
-        body {
-            background-color: #2d2d2d;
-            color: #efe4d1;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            margin: 20px 0;
-        }
-
-        h2 {
-            color: #2d2d2d;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .chart {
-            background-color: #efe4d1;
-            border-radius: 10px;
-            margin: 20px;
-            padding: 20px;
-            width: 400px; /* Increased width for larger charts */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        .profile {
-            background-color: #efe4d1;
-            color: #2d2d2d;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px;
-            width: 350px; /* Consistent width with charts */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            display: inline-block;
-            text-align: left;
-        }
-        .profile h2 {
-            margin-top: 0;
-        }
-        .profile img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            margin-bottom: 10px;
-        }
-        .edit-button, .save-button {
-            background-color: #2d2d2d;
-            color: #efe4d1;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .input-field {
-            display: none; /* Hidden by default */
-            margin: 5px 0;
-        }
-        .input-field label {
-            display: block;
-            margin: 5px 0 2px;
-        }
-        .input-field input, .input-field textarea {
-            width: 100%;
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        canvas {
-            background-color: #efe4d1;
-            margin: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-    </style>
 </head>
 <body>
+    <div class="main-container">
+        <div class="content-wrapper" style="display: flex; flex-direction: row;">
+            <!-- Left Section - User Profile -->
+            <section class="profile-section" style="flex: 1; margin-right: 20px;">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-cover">
+                            <div class="profile-picture">
+                                <img src="profile-pic.jpg" alt="Profile Picture" id="profilePicture">
+                                <button class="edit-photo-btn">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h1 id="profileName">Loading...</h1>
+                            <p id="profileEmail" class="email">Loading email...</p>
+                            <div class="profile-badges">
+                                <span class="badge"><i class="fas fa-star"></i> Advanced</span>
+                                <span class="badge"><i class="fas fa-trophy"></i> Top 10%</span>
+                            </div>
+                        </div>
+                    </div>
 
-    <h1>User Profile</h1>
-    <div class="profile">
-        <img src="profile-pic.jpg" alt="Profile Picture" id="profilePicture">
-        <h2>User Profile</h2>
-        <div id="profileInfo">
-            <p><strong>Name:</strong> <span id="profileName"></span></p>
-            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
-            <p><strong>Bio:</strong> <span id="profileAbout"></span></p>
-            <p><strong>Interests:</strong> <span id="profileInterests"></span></p>
-        </div>
-        <div id="profileInputs" class="input-field">
-            <label for="nameInput">Name:</label>
-            <input type="text" id="nameInput">
+                    <div class="stats-overview">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value">42</span>
+                                <span class="stat-label">Completed</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value">15</span>
+                                <span class="stat-label">In Progress</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value">89%</span>
+                                <span class="stat-label">Success Rate</span>
+                            </div>
+                        </div>
+                    </div>
 
-            <label for="aboutInput">About:</label>
-            <textarea id="aboutInput"></textarea>
-            <label for="interestsInput">Interests:</label>
-            <input type="text" id="interestsInput">
+                    <div class="profile-details" id="profileInfo">
+                        <div class="section-title">
+                            <h2>Profile Information</h2>
+                            <button class="btn btn-icon" id="editButton">
+                                <i class="fas fa-edit"></i> Edit Profile
+                            </button>
+                        </div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <i class="fas fa-user-circle"></i>
+                                <div class="info-content">
+                                    <label>About Me</label>
+                                    <p id="profileAbout">Loading...</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <div class="info-content">
+                                    <label>Interests</label>
+                                    <p id="profileInterests">Loading...</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div class="info-content">
+                                    <label>Learning Path</label>
+                                    <p>Data Structures & Algorithms</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div class="info-content">
+                                    <label>Member Since</label>
+                                    <p>January 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="profileInputs" class="edit-form" style="display: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="nameInput">
+                                    <i class="fas fa-user"></i>
+                                    Full Name
+                                </label>
+                                <input type="text" id="nameInput" placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="aboutInput">
+                                    <i class="fas fa-info-circle"></i>
+                                    About Me
+                                </label>
+                                <textarea id="aboutInput" rows="4" placeholder="Tell us about yourself"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="interestsInput">
+                                    <i class="fas fa-heart"></i>
+                                    Interests
+                                </label>
+                                <input type="text" id="interestsInput" placeholder="Your interests (comma separated)">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancelButton">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button type="button" class="btn btn-primary" id="saveButton">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Right Section - Analytics -->
+            <section class="analytics-section" style="flex: 1;">
+                <div class="analytics-header">
+                    <div class="header-content">
+                        <h2><i class="fas fa-chart-bar"></i> Learning Analytics</h2>
+                        <div class="time-filter">
+                            <button class="filter-btn active" data-period="week">Week</button>
+                            <button class="filter-btn" data-period="month">Month</button>
+                            <button class="filter-btn" data-period="year">Year</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h2>Sorting Algorithm Usage</h2>
+                            <i class="fas fa-info-circle chart-info"></i>
+                        </div>
+                        <canvas id="selectionFrequencyChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h2>Node Operations</h2>
+                            <i class="fas fa-info-circle chart-info"></i>
+                        </div>
+                        <canvas id="nodeFrequencyChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h2>Node Direction Analysis</h2>
+                            <i class="fas fa-info-circle chart-info"></i>
+                        </div>
+                        <canvas id="nodeDirectionChart"></canvas>
+                    </div>
+                </div>
+            </section>
         </div>
-        <button class="edit-button" id="editButton">Edit</button>
-        <button class="save-button" id="saveButton" style="display: none;">Save Changes</button>
     </div>
 
-    <h1>Data Visualization</h1>
-    <div class="container">
-        <div class="chart">
-            <h2>Sorting Frequency Visualization</h2>
-            <canvas id="selectionFrequencyChart" width="400" height="300"></canvas> <!-- Increased height -->
-        </div>
-        <div class="chart">
-            <h2>Node Frequency Visualization</h2>
-            <canvas id="nodeFrequencyChart" width="400" height="300"></canvas> <!-- Increased height -->
-        </div>
-        <div class="chart">
-            <h2>Node Direction Visualization</h2>
-            <canvas id="nodeDirectionChart" width="400" height="300"></canvas> <!-- Increased height -->
-        </div>
-    </div>
-
+    <script type="module" src="../scripts/profile.js"></script>
 </body>
 </html>
