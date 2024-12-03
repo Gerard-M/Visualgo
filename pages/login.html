@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../styles/log_in.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script></head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+</head>
 <body>
     <div class="container">
         <div class="left" id="vanta-left">
@@ -15,21 +17,32 @@
         </div>
         <div class="right">
             <div class="login-box">
-                <div class="icon">
-                    <i class="fas fa-user-circle"></i> 
+                <div class="header-section">
+                    <h2>Welcome Back</h2>
+                    <p class="subtitle">Sign in to continue your journey</p>
                 </div>
-                <h2>Log In</h2>
-                <div class="input-group">
-                    <input type="text" id="email" placeholder="Email ID"/>
+                
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email ID"/>
                 </div>
-                <div class="input-group">
+                
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
                     <input type="password" id="password" placeholder="Password"/>
                 </div>
+                
                 <div class="options">
-
-                    <a href="../pages/forgetpassword.html" id="forgotPassword">Forgot Password?</a>
+                    <a href="../pages/forgetpassword.html" id="forgotPassword">
+                        <i class="fas fa-key"></i> Forgot Password?
+                    </a>
                 </div>
-                <button class="login-btn" id="login-btn">LOGIN</button>
+                
+                <button class="login-btn" id="login-btn">
+                    <span>LOGIN</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                
                 <div class="signup-link">
                     <p>Don't have an account? <a href="../pages/register.html" id="registerLink">Sign Up</a></p>
                 </div>
@@ -40,7 +53,6 @@
     <div class="left" id="vanta-bg">
         <img src="../assets/Visualgo.png" alt="VisualGo">
     </div>
-
 
     <script type="module" src="../scripts/login.js"></script>
 </body>
